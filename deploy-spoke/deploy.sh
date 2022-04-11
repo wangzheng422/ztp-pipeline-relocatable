@@ -20,6 +20,9 @@ if ! ./verify.sh 1; then
 
     cd ${OUTPUTDIR}
     oc apply -k .
+    echo "Pushing custom manifests"
+    ${WORKDIR}/${DEPLOY_SPOKES_DIR}/push-manifest-override.sh
+    
 
     echo "Verifying again the clusterDeployment"
     # Waiting for 166 min to have the cluster deployed
