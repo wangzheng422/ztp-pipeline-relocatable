@@ -167,7 +167,7 @@ function clean_openshift_pipelines() {
 export BRANCH=${1:-main}
 export KUBECONFIG_HUB="${KUBECONFIG}"
 
-if [[ ${0} == *"bootstrap.sh" ]]; then
+if [[ ${0} == *"bootstrap.wzh.sh" ]]; then
     echo "Running locally"
     export WORKDIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
     export PIPELINES_DIR=${WORKDIR}
@@ -176,12 +176,12 @@ else
     export BASEDIR=$(dirname "$0")
     export WORKDIR=${BASEDIR}/ztp-pipeline-relocatable
     export PIPELINES_DIR=${WORKDIR}/pipelines
-    clone_ztp
+    # clone_ztp
 fi
 
-get_clients
-get_tkn
-get_yq
+# get_clients
+# get_tkn
+# get_yq
 
 export EDGE_DEPLOYER_NS=$(yq eval '.namespace' "${PIPELINES_DIR}/resources/kustomization.yaml")
 export EDGE_DEPLOYER_SA=${EDGE_DEPLOYER_NS}
